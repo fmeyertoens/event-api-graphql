@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import expressGraphQL from 'express-graphql';
 import mongoose from 'mongoose';
 import 'dotenv/config';
@@ -10,6 +11,7 @@ import resolvers from './resolvers/index';
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use(
   '/api',
