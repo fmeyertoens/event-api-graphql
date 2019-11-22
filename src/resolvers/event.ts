@@ -1,4 +1,5 @@
 import Event from '../event/event.model';
+const mockData = require('../event/event-mock-100.json');
 
 const resolvers = {
   events: async () => {
@@ -8,6 +9,9 @@ const resolvers = {
     } catch (error) {
       throw error;
     }
+  },
+  eventsLocal: () => {
+    return mockData;
   }
 }
 
