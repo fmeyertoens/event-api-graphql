@@ -4,6 +4,7 @@ const graphql_1 = require("graphql");
 const schema = graphql_1.buildSchema(`
   type Query {
     events: [Event!]!
+    eventsLocal: [Event!]!
     test: Boolean
   }
 

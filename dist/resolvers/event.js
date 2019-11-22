@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const event_model_1 = __importDefault(require("../event/event.model"));
+const mockData = require('../event/event-mock-100.json');
 const resolvers = {
     events: async () => {
         try {
@@ -13,6 +14,9 @@ const resolvers = {
         catch (error) {
             throw error;
         }
+    },
+    eventsLocal: () => {
+        return mockData;
     }
 };
 exports.default = resolvers;
