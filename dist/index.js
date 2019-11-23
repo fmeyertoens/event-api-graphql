@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const cors_1 = __importDefault(require("cors"));
 const express_graphql_1 = __importDefault(require("express-graphql"));
 const mongoose_1 = __importDefault(require("mongoose"));
 require("dotenv/config");
@@ -12,6 +13,7 @@ const index_1 = __importDefault(require("./schema/index"));
 const index_2 = __importDefault(require("./resolvers/index"));
 const app = express_1.default();
 app.use(body_parser_1.default.json());
+app.use(cors_1.default());
 app.use('/api', express_graphql_1.default({
     schema: index_1.default,
     rootValue: index_2.default,
