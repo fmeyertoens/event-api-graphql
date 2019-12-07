@@ -1,10 +1,12 @@
 import event from './event';
+import user from './user';
 
 const resolvers = {
   test: () => {
     return true;
   },
-  ...event
+  ...event,
+  ...user
 };
 
 export default resolvers;

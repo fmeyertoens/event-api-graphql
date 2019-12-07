@@ -2,8 +2,9 @@ import { buildSchema } from 'graphql';
 
 const schema = buildSchema(`
   type Query {
-    events: [Event!]!
+    events(amount: Int = 100): [Event!]!
     eventsLocal: [Event!]!
+    users: [User!]!
     test: Boolean
   }
 
