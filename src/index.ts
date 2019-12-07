@@ -11,7 +11,7 @@ import resolvers from './resolvers/index';
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({maxAge: 600}));
 
 app.use(
   '/api',
