@@ -11,6 +11,7 @@ import resolvers from './resolvers/index';
 const app = express();
 
 app.use(bodyParser.json());
+// set Access-Control-Max-Age Header to cache Options request
 app.use(cors({maxAge: 600}));
 
 app.use(
