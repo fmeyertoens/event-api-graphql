@@ -10,7 +10,7 @@ The sibling [`../people-api`](../people-api) project offers a REST representatio
 
 ### Local integration
 
-The comparison client offers `http://localhost:8000/api` as its local GraphQL URI. To use that setting, set `PORT=8000` here, set `MONGO_URI`, start this server, start the REST API separately (normally on port 5000), then run the frontend. Other ports work when the client setting is updated to match. The parent `rest-graphql-comparison` repository supplies a four-container Compose setup, including MongoDB.
+The comparison client offers `http://localhost:8000/api` as its local GraphQL URI. To use that setting, set `PORT=8000` here, set `MONGO_URI`, start this server, start the REST API separately (normally on port 5000), then run the frontend. Other ports work when the client setting is updated to match. The parent `rest-graphql-comparison` repository supplies a four-container Compose setup, including MongoDB, and mounts the shared fixture at runtime for `eventsLocal`.
 
 ## Project Overview
 
@@ -67,7 +67,7 @@ query {
   }
 }
 
-# Fetch events from local source
+# Fetch events from the Compose-mounted shared fixture
 query {
   eventsLocal {
     id
@@ -101,6 +101,8 @@ query {
   test
 }
 ```
+
+The `eventsLocal` query reads the canonical `mongo/seed/event-mock-100.json` fixture mounted by Docker Compose. It is unavailable when this server runs standalone unless that fixture is supplied at the expected runtime path.
 
 ## Getting Started
 
@@ -177,18 +179,9 @@ This interactive interface allows you to write and test GraphQL queries directly
 │   │   └── user.model.ts     # User Mongoose model
 │   └── event/
 │       ├── event.interface.ts # Event TypeScript interface
-│       ├── event.model.ts    # Event Mongoose model
-│       └── event-mock-100.json # Mock event data
+│       └── event.model.ts    # Event Mongoose model
 ├── package.json
 ├── tsconfig.json
 ├── nodemon.json
 └── README.md
 ```
-
-## License
-
-ISC
-
-## Author
-
-Fabian Meyertöns
